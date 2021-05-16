@@ -1,0 +1,18 @@
+Encryption:
+
+Considering the limited time, I foresee problems in using a tool that will encrypt all fields in the database. 
+
+The encryption schemes do not offer ordering (if they did, the encryption would be breakable using binary search. 
+
+For all encrypted fields, we would lose the following: ordering, sorting, searches with partial text, indexes
+that span more than one field. In our site, searching would break, and we can only search for exact matches. 
+
+Any search indexing (like elastic search) would weaken the encryption, as data may be inferred from the search 
+index itself.
+
+To simplify the solution I’ll use the symmetric encryption package django-fernet-fields. 
+The most vulnerable data is the card itself, so I’ll just encrypt that.
+
+I believe this is a good quick compromise, as it is not going to break anything, yet it protects the most 
+important part – the money (the card).
+
