@@ -1,0 +1,19 @@
+See: Andrea_Changes.odt for detailed description and explanation.
+
+Bug 1: Unescaped (raw) URL parameter allowed. 
+    Attack: Allowed for Cross-site Scripting.
+    Effect: The attacker can execute any sript on the user's browser, including requests on behalf of the user.
+
+But 2: Unescaped (raw) URL parameter allowed (same bug, but different attack).
+    Attack: Cross-site Request Forgery.
+    Effect: Takes the user away from the site to a form that can ask for password etc. and steal it.
+
+Bug 3: Raw SQL query parameters.
+    Attack: SQL Injection (Union Query).
+    Effect: From just signature, the site displays the hash of the user's passwrord, allowing for the next step of password atack.
+
+Bug 4: HTTP clear text exposure of traffic.
+    Attack: Sniffing.
+    Attack: Malicious proxying (Man in the Middle attack).
+    Effect: Attacker can steal the session (token) and act on behalf of the user, or even make direct requests in the case of proxying.
+
